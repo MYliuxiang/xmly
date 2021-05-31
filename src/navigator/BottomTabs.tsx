@@ -15,6 +15,9 @@ import {
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {RootStackNavigationProp, RootStackParamList} from '.';
 import { Alert } from 'react-native';
+import { color } from 'react-native-reanimated';
+import IconFont from '@/assets/iconfont/index';
+
 
 export type BottomTabParamList = {
   Home: undefined;
@@ -78,15 +81,28 @@ class BottomTabs extends React.Component<IProps> {
       <Tab.Navigator>
         <Tab.Screen name="Home" component={Home}  options={{
             tabBarLabel: '首页',
-          }}/>
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-u138" color={color} size={size} />
+            ),
+          }}
+          />
         <Tab.Screen name="Listen" component={Listen} options={{
             tabBarLabel: '我听',
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-ting" color={color} size={size} />
+            ),
           }}/>
         <Tab.Screen name="Found" component={Found} options={{
             tabBarLabel: '发现',
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-u138" color={color} size={size} />
+            ),
           }}/>
         <Tab.Screen name="Account" component={Account} options={{
             tabBarLabel: '我的',
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-wode" color={color} size={size} />
+            ),
           }}/>
       </Tab.Navigator>
     );
