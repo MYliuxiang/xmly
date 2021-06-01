@@ -1,6 +1,6 @@
 import React from 'react';
 import Listen from '@/pages/Listen';
-import Home from '@/pages/Home';
+import Home from '@/pages/Home/Home';
 import Found from '@/pages/Found';
 import Account from '@/pages/Account';
 import {
@@ -17,10 +17,11 @@ import {RootStackNavigationProp, RootStackParamList} from '.';
 import { Alert } from 'react-native';
 import { color } from 'react-native-reanimated';
 import IconFont from '@/assets/iconfont/index';
+import HomeTabs from './HomeTabs';
 
 
 export type BottomTabParamList = {
-  Home: undefined;
+  HomeTabs: undefined;
   Listen: undefined;
   Found: undefined;
   Account: undefined;
@@ -46,8 +47,8 @@ interface IProps {
 
 function getHeaderTitle(routeName:string | undefined){
     switch(routeName){
-        case 'Home':
-            return '主页';
+        case 'HomeTabs':
+            return '';
         case 'Listen':
             return '我听';
          case 'Found':
@@ -79,7 +80,7 @@ class BottomTabs extends React.Component<IProps> {
   render() {
     return (
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home}  options={{
+        <Tab.Screen name="HomeTabs" component={HomeTabs}  options={{
             tabBarLabel: '首页',
             tabBarIcon: ({color, size}) => (
               <IconFont name="icon-u138" color={color} size={size} />

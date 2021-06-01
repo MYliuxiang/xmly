@@ -9,13 +9,13 @@ axios.interceptors.request.use(
   },
   function (error) {
     console.log('--error', error);
-    return Promise.reject(error);
+    return error;
   },
 );
 
 axios.interceptors.response.use(
   function (response) {
-    return Promise.resolve(response.data);
+    return response.data;
   },
   function (error) {
     return Promise.reject(error);
