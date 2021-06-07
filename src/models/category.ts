@@ -406,7 +406,7 @@ const Category: CategoryModelType = {
   },
   subscriptions: {
     setup({dispatch}) {
-      dispatch({type: 'loadDataForStore'});
+      // dispatch({type: 'loadDataForStore'});
     },
   },
 };

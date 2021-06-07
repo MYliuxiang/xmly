@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Config from 'react-native-config';
 
-axios.defaults.baseURL = "http:192.0.0.1:8080";
+axios.defaults.baseURL = "http://172.16.20.22:3000";
 axios.defaults.timeout = 30;
 axios.interceptors.request.use(
   function (config) {
@@ -18,6 +18,7 @@ axios.interceptors.response.use(
     return response.data;
   },
   function (error) {
+    console.log(error);
     return Promise.reject(error);
     // return {error:error};
   },

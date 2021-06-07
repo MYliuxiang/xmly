@@ -9,6 +9,16 @@ interface Iprops {
 }
 
 class Detail extends Component <Iprops>{
+   
+  componentDidMount(){
+    this.props.navigation.setOptions(
+      {
+        title:"想法破"
+      }
+    )
+  }
+
+
   render() {
     const {route} = this.props;
     return (

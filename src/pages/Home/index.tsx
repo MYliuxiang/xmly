@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Button, Image} from 'react-native';
+import {Text, View, Button, Image, SafeAreaView} from 'react-native';
 import {RootStackNavigationProp} from '@/navigator/index';
 import {connect, ConnectedProps} from 'react-redux';
 import {
@@ -17,6 +17,7 @@ import SnapCarousel, {
   Pagination,
   AdditionalParallaxProps,
 } from 'react-native-snap-carousel';
+import { kScreenW } from '@/untils/LxLayout';
 
 const mapState = ({home}: RootState) => ({
   carouselList: home.carouselList,
@@ -63,7 +64,8 @@ class Home extends Component<Iprops> {
     const {carouselList, activeSlide} = this.props;
 
     return (
-      <View>
+
+        <View>
         <Text> 主页 </Text>
         <Text> dva:{activeSlide} </Text>
         <Icon.Button name="rocket" backgroundColor="#3b5998">
@@ -73,35 +75,34 @@ class Home extends Component<Iprops> {
 
         <SnapCarousel
           ref={this.carouselRef}
-          data={[1,2]}
+          data={[1, 2]}
           renderItem={_item => {
             return (
               <Image
-                style={{width: 250, height: 100}}
+                style={{width: kScreenW - 20, height: 100}}
                 source={{
                   uri: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fdf6b69018db81b027a21d5dbe083085f2a24358c5e5be-HvW7Zn_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1625130323&t=85f6e0969bbf16e6cdc6625267d45a24',
                 }}></Image>
             );
           }}
-          sliderWidth={300}
-          itemWidth={250}
+          sliderWidth={kScreenW}
+          itemWidth={kScreenW - 20}
           hasParallaxImages={true}
-          inactiveSlideScale={0.94}
+          inactiveSlideScale={0.8}
           inactiveSlideOpacity={0.7}
           loop={true}
           loopClonesPerSide={2}
           autoplayDelay={500}
           autoplayInterval={3000}
           removeClippedSubviews={false}></SnapCarousel>
-
       </View>
     );
   }
 
   onclick = () => {
-    // const {navigation} = this.props;
-    // navigation.navigate("Detail",{});
-    this.loadData(true);
+    const {navigation} = this.props;
+    navigation.navigate('MDetail', {});
+    // this.loadData(true);
   };
 }
 

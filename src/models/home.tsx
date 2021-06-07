@@ -11,8 +11,6 @@ export interface ICarousel {
   colors: [string, string];
 }
 
-
-
 export interface HomeModelState {
   activeSlide: number; // 是否显示播放按钮
   carouselList: ICarousel[];
